@@ -112,35 +112,11 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#expression-string-single</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-string-double</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-group-parens</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-group-brackets</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-group-braces</string>
+					<string>#expression-common</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#expression-operator-no-gt</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-special-class</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#expression-special-operator</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -229,6 +205,22 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#expression-common</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression-operator</string>
+				</dict>
+			</array>
+		</dict>
+		<key>expression-common</key>
+		<dict>
+			<key>comment</key>
+			<string>A JavaScript expression</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
 					<string>#expression-string-single</string>
 				</dict>
 				<dict>
@@ -249,7 +241,15 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#expression-operator</string>
+					<string>#expression-constant</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression-hex</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#expression-numeric</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -260,6 +260,44 @@
 					<string>#expression-special-operator</string>
 				</dict>
 			</array>
+		</dict>
+		<key>expression-constant</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.boolean.true.js</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.boolean.false.js</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.infinity.js</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.nan.js</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.null.js</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.undefined.js</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(true)|(false)|(Infinity)|(NaN)|(null)|(undefined)</string>
 		</dict>
 		<key>expression-group-braces</key>
 		<dict>
@@ -350,6 +388,30 @@
 					<string>#expression</string>
 				</dict>
 			</array>
+		</dict>
+		<key>expression-hex</key>
+		<dict>
+			<key>match</key>
+			<string>\b0[xX]\h+\b</string>
+			<key>name</key>
+			<string>constant.numeric.hex.js</string>
+		</dict>
+		<key>expression-numeric</key>
+		<dict>
+			<key>match</key>
+			<string>(?x)
+				(?&lt;!\w)									# Ensure word boundry
+				(?&gt;
+					(
+						(0|[1-9][0-9]*)(\.[0-9]*)?		# 0 or 1 or 1. or 1.0
+					  | \.[0-9]+						# .1
+					)
+					([eE][+-]?[0-9]+)?					# Exponent
+				)
+				(?!\w)									# Ensure word boundry
+			</string>
+			<key>name</key>
+			<string>constant.numeric.js</string>
 		</dict>
 		<key>expression-operator</key>
 		<dict>
@@ -665,22 +727,8 @@
 		</dict>
 		<key>tag-concise</key>
 		<dict>
-			<key>begin</key>
-			<string>^\s*(?=[a-zA-Z0-9_.#-])</string>
-			<key>comment</key>
-			<string>Concise tag</string>
-			<key>end</key>
-			<string>$</string>
 			<key>patterns</key>
 			<array>
-				<dict>
-					<key>include</key>
-					<string>#html-line-concise</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#attr-stuff</string>
-				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag-name-custom-concise</string>
@@ -729,7 +777,9 @@
 		</dict>
 		<key>tag-name-concise</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>^\s*([a-zA-Z0-9_.#-]+)(?=(\s|$|\())</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -739,23 +789,47 @@
 			</dict>
 			<key>comment</key>
 			<string>A concise tag name</string>
-			<key>match</key>
-			<string>([a-zA-Z0-9_#.]+)(?=(\s|$|\())</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#html-line-concise</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attr-stuff</string>
+				</dict>
+			</array>
 		</dict>
 		<key>tag-name-custom-concise</key>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[#.][a-zA-Z0-9_#.-]+|[a-zA-Z0-9_#.]+([:-])[a-zA-Z0-9_:-]+)(?=(\s|$|\())</string>
+			<key>beginCaptures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag</string>
+					<string>entity.name.tag</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>A concise custom tag name</string>
-			<key>match</key>
-			<string>(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[#.][a-zA-Z0-9_#.-]+|[a-zA-Z0-9_#.]+([:-])[a-zA-Z0-9_:-]+)(?=(\s|$|\())</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#html-line-concise</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attr-stuff</string>
+				</dict>
+			</array>
 		</dict>
 		<key>tag-name-custom-html</key>
 		<dict>
