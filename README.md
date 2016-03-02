@@ -8,12 +8,12 @@ This package is used as the source for both the [atom-language-marko](https://gi
 
 ### Sublime Text 2/3
 
-See:[sublime-marko](https://github.com/merwan7/sublime-marko)
+See: [sublime-marko](https://github.com/merwan7/sublime-marko)
 
 ### TextMate 2
 
     mkdir -p ~/Library/Application\ Support/TextMate/Managed/Bundles
     cd ~/Library/Application\ Support/TextMate/Managed/Bundles
-    git clone https://github.com/patrick-steele-idem/marko.tmbundle.git Marko.tmbundle
+    git clone https://github.com/patrick-steele-idem/marko-tmbundle.git Marko.tmbundle
 
 Patches for additions are always welcome.
