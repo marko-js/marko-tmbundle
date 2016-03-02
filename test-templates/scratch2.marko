@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+my-custom-tag checked for(color in collors) foo="bar"
+tabs:tab:title
+// This is a line comment
+<div foo="bar" hello="world"> <i><b>Test</b></i>
+	<div>Hello World</div>
+	<span>Test</span>
+	Hello ${data.name}!
+</div>test
+<div class=(a instanceof 'string' + b + new Boolean()) bar="123">
+	Test
+</div>
+div class=( a > 1 ? 'test' : 'bar' ) style="background-color: red;"
+	div foo="bar"
+	span class="abc ${data.name}"
+		// This is a nested comment
+		<!-- This is an HTML comment -->
+		Hello World
+my-custom-tag checked for(color in collors) w-bind marko-preserve
+
+<div w-bind="123" w-bind marko-preserve if(test + 2)>
+	<!-- This is an HTML comment -->
+	<if(notEmpty(test)) ${color in colors}>
+		<ul>
+			<li for(color in collors) class="foo">
+			</li>
+		</ul>
+	</if>
+	<% if(a) { %>
+</div>
+<my-custom-tag>
+    <div>
+	${test}
+	</div>
+	<my-custom-tag>
+	</my-custom-tag>
+</my-custom-tag>
+<tabs:tab:title>
+	Foo
+	<script>
+		var i = 1 + 2;
+		var b = 3+2;
+	</script>
+</tabs:tab:title>
+script type="text-javascript" - var i = 1 + 2;
+	---
+	var i = 1 + 2;
+	var b = 3+2;
+	---
+script type="text-javascript"
+	---
+	var i = 1 + 2;
+	var b = 3+2;
+	---
+style - .foo-bar { background-color: 'red'; }
+style
+	---
+	.foo-bar {
+		background-color: 'red';
+	}
+	---
+<style>
+	.foo-bar {
+		background-color: 'red';
+	}
+</style>
+<script>
+	var i = 1 + 2;
+	var b = 3+2;
+</>
+<script>
+</script>
+div - This is <b>HTML</b> text
+span
+	---
+	This is <b>HTML</b> text
+	This is <b>HTML</b> text
+	---
+	div back to normal saf
+app-docs-nav active-link=data.activeLink

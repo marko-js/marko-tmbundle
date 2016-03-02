@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html lang="en"
+    head
+        title - Marko Templating Engine
+		script
+			var i = 1+2;
+			var test = 1+2;
+		
+		<style>
+			
+		</style>
+    body
+		<div>
+			<div>
+			Test
+			</div>
+		</div>
+		#ftestsaf.test 
+		// Test
+        h1 - Hello ${data.name}!
+        ul if(notEmpty(data.colors))
+            li for(color in data.colors)
+                ${color}
+        div else
+            - No colors!
+			
+		iframe src="abc"
+		<iframe>
+<invoke console.log('Hello world')/>
