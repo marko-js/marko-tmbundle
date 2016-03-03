@@ -557,6 +557,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#comment-html</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#placeholder</string>
 				</dict>
 			</array>
@@ -564,7 +568,7 @@
 		<key>html-line-concise</key>
 		<dict>
 			<key>begin</key>
-			<string>\s+(-)</string>
+			<string>\s*(-)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -580,6 +584,10 @@
 				<dict>
 					<key>include</key>
 					<string>#tag-html</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment-html</string>
 				</dict>
 				<dict>
 					<key>include</key>
