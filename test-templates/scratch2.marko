@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+- Test <!-- Hello World --> This is back to normal
 my-custom-tag checked for(color in collors) foo="bar"
 tabs:tab:title
 // This is a line comment
@@ -29,6 +30,7 @@ my-custom-tag checked for(color in collors) w-bind marko-preserve
 	</if>
 	<% if(a) { %>
 </div>
+
 <my-custom-tag>
     <div>
 	${test}
@@ -79,3 +81,15 @@ span
 	---
 	div back to normal saf
 app-docs-nav active-link=data.activeLink
+    ---
+    Hello <!-- This is an inline comment --> World
+    ---
+<div>
+	Hello <!-- This is an inline comment --> World
+</div>
+<html-comment><![CDATA[[if lt IE 9]><div><![endif]]]></html-comment>
+<![CDATA[[if lt IE 9]><div><![endif]]]>
+- <![CDATA[[if lt IE 9]><div><![endif]]]>
+---
+<![CDATA[[if lt IE 9]><div><![endif]]]>
+---
