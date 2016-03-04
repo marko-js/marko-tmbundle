@@ -28,6 +28,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#cdata</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#doctype</string>
 		</dict>
 		<dict>
@@ -123,6 +127,31 @@
 					<string>#placeholder</string>
 				</dict>
 			</array>
+		</dict>
+		<key>cdata</key>
+		<dict>
+			<key>begin</key>
+			<string>&lt;!\[CDATA\[</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.xml</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>]]&gt;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.xml</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.unquoted.cdata.xml</string>
 		</dict>
 		<key>comment-concise</key>
 		<dict>
@@ -553,6 +582,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#cdata</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#tag-html</string>
 				</dict>
 				<dict>
@@ -583,6 +616,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#cdata</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#tag-html</string>
 				</dict>
 				<dict>
@@ -605,6 +642,10 @@
 			<string>(?=&lt;/)</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#cdata</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#comment-html</string>
@@ -666,7 +707,7 @@
 		<key>placeholder</key>
 		<dict>
 			<key>begin</key>
-			<string>\$\{</string>
+			<string>[$][!]?\{</string>
 			<key>captures</key>
 			<dict>
 				<key>0</key>
