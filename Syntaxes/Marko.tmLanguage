@@ -88,7 +88,7 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\s(for|if|else-if|w-[a-zA-Z0-9:_-]+|marko-[a-zA-Z0-9:_.-]+lasso-[a-zA-Z0-9:_.-]+)(?=(\s|$|&gt;|/&gt;))</string>
+					<string>\s(for|if|else-if|w-[a-zA-Z0-9:_-]+|marko-[a-zA-Z0-9:_.-]+lasso-[a-zA-Z0-9:_.-]+)(?=(\s|$|[&gt;(]|/&gt;))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -855,13 +855,13 @@
 		<key>tag-name-custom-concise</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[#.][a-zA-Z0-9_#.-]+|[a-zA-Z0-9_#.]+([:-])[a-zA-Z0-9_:-]+)(?=(\s|$|\())</string>
+			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[#.][a-zA-Z0-9_#.-]+|[a-zA-Z0-9_#.]+([:-])[a-zA-Z0-9_:-]+)(?=(\s|$|[(]))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag</string>
+					<string>support.function.marko-tag</string>
 				</dict>
 			</dict>
 			<key>comment</key>
