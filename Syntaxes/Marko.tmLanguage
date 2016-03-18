@@ -52,7 +52,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#placeholder</string>
+			<string>#placeholder-patterns</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -88,7 +88,31 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>\s(for|if|else-if|w-[a-zA-Z0-9:_-]+|marko-[a-zA-Z0-9:_.-]+lasso-[a-zA-Z0-9:_.-]+)(?=(\s|$|[&gt;(]|/&gt;))</string>
+					<string>\s(for|if|else-if|unless)(?=([(]))</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.marko-attribute</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\s(else|w-[a-zA-Z0-9:_-]+|marko-[a-zA-Z0-9:_.-]+)(?=(\s|$|[&gt;(]|/&gt;))</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>support.function.marko-attribute</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\s(w-[a-zA-Z0-9:_-]+|lasso-[a-zA-Z0-9:_.-]+)(?=(\s|$|[&gt;(=]|/&gt;))</string>
 				</dict>
 				<dict>
 					<key>captures</key>
@@ -504,7 +528,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 			</array>
 		</dict>
@@ -542,7 +566,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 			</array>
 		</dict>
@@ -594,7 +618,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 			</array>
 		</dict>
@@ -628,7 +652,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 			</array>
 		</dict>
@@ -656,7 +680,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -676,7 +700,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -696,7 +720,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#placeholder</string>
+					<string>#placeholder-patterns</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -727,6 +751,38 @@
 				<dict>
 					<key>include</key>
 					<string>#expression</string>
+				</dict>
+			</array>
+		</dict>
+		<key>placeholder-escaped</key>
+		<dict>
+			<key>comment</key>
+			<string>\${</string>
+			<key>match</key>
+			<string>\\[$][!]?[{]</string>
+		</dict>
+		<key>placeholder-escaped-escaped</key>
+		<dict>
+			<key>comment</key>
+			<string>\\${</string>
+			<key>match</key>
+			<string>\\\\(?=[$][!]?[{])</string>
+		</dict>
+		<key>placeholder-patterns</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#placeholder-escaped-escaped</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#placeholder-escaped</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#placeholder</string>
 				</dict>
 			</array>
 		</dict>
