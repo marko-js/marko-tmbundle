@@ -14,6 +14,6 @@ See: [sublime-marko](https://github.com/merwan7/sublime-marko)
 
     mkdir -p ~/Library/Application\ Support/TextMate/Managed/Bundles
     cd ~/Library/Application\ Support/TextMate/Managed/Bundles
-    git clone https://github.com/patrick-steele-idem/marko-tmbundle.git Marko.tmbundle
+    git clone https://github.com/marko-js/marko-tmbundle.git Marko.tmbundle
 
 Patches for additions are always welcome.
