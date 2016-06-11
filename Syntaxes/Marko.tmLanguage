@@ -883,13 +883,18 @@
 		<key>tag-name-concise</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-zA-Z0-9_.#-]+)(?=(\s|$|\())</string>
+			<string>^\s*(([a-zA-Z0-9_-]+)([.#][a-zA-Z0-9_.#-]*)?)(?=(\s|$|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.concise</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.shorthand</string>
 				</dict>
 			</dict>
 			<key>comment</key>
@@ -911,7 +916,7 @@
 		<key>tag-name-custom-concise</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[#.][a-zA-Z0-9_#.-]+|[a-zA-Z0-9_#.]+([:-])[a-zA-Z0-9_:-]*)(?=(\s|$|[(]))</string>
+			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*)(?=(\s|$|[(]))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1079,30 +1084,40 @@
 		<key>tag-name-shorthand-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(([a-zA-Z0-9_-]+)[#.][a-zA-Z0-9_#.:-]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>&lt;(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>entity.name.tag.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.shorthand</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>HTML tag with shorthand ID/class parts</string>
 			<key>end</key>
-			<string>&lt;/(\1)&gt;|&lt;/(\2)&gt;|&lt;/&gt;|/&gt;</string>
+			<string>&lt;/(\2)&gt;|&lt;/(\2(\3))&gt;|&lt;/&gt;|/&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>entity.name.tag.html</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>entity.name.tag.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.shorthand</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
