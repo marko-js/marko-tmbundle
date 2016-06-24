@@ -916,7 +916,7 @@
 		<key>tag-name-custom-concise</key>
 		<dict>
 			<key>begin</key>
-			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*)(?=(\s|$|[(]))</string>
+			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*)(?=(\s|$|[(]))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -944,7 +944,7 @@
 		<key>tag-name-custom-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|[a-zA-Z0-9_]+[-:][a-zA-Z0-9\-_:]*)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>&lt;(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+[-:][a-zA-Z0-9\-_:]*)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
