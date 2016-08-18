@@ -16,4 +16,9 @@ See: [sublime-marko](https://github.com/merwan7/sublime-marko)
     cd ~/Library/Application\ Support/TextMate/Managed/Bundles
     git clone https://github.com/marko-js/marko-tmbundle.git Marko.tmbundle
 
+### Jetbrains IntelliJ IDEA / Webstorm / etc
+
+- Install Textmate bundles support plugin inside IDE
+- See: [Importing TextMate Bundles](https://www.jetbrains.com/help/phpstorm/2016.2/importing-textmate-bundles.html)
+
 Patches for additions are always welcome.
