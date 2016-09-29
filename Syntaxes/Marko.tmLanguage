@@ -214,7 +214,7 @@
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.tag.html</string>
+					<string>punctuation.definition.marko-tag.html</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -659,7 +659,15 @@
 		<key>open-tag-end</key>
 		<dict>
 			<key>begin</key>
-			<string>&gt;</string>
+			<string>(&gt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.open.html</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>Concise style tag with CSS code.</string>
 			<key>end</key>
@@ -691,7 +699,15 @@
 		<key>open-tag-end-script</key>
 		<dict>
 			<key>begin</key>
-			<string>&gt;</string>
+			<string>(&gt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.open.html</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>Concise style tag with CSS code.</string>
 			<key>end</key>
@@ -711,7 +727,15 @@
 		<key>open-tag-end-style</key>
 		<dict>
 			<key>begin</key>
-			<string>&gt;</string>
+			<string>(&gt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.open.html</string>
+				</dict>
+			</dict>
 			<key>comment</key>
 			<string>Concise style tag with CSS code.</string>
 			<key>end</key>
@@ -807,26 +831,6 @@
 				<dict>
 					<key>include</key>
 					<string>source.js</string>
-				</dict>
-			</array>
-		</dict>
-		<key>self-closed-end</key>
-		<dict>
-			<key>begin</key>
-			<string>&gt;</string>
-			<key>comment</key>
-			<string>Concise style tag with CSS code.</string>
-			<key>end</key>
-			<string>(?=&lt;/)</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#tag-custom-html</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#tag-html</string>
 				</dict>
 			</array>
 		</dict>
@@ -944,25 +948,45 @@
 		<key>tag-name-custom-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+[-:][a-zA-Z0-9\-_:]*)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+[-:][a-zA-Z0-9\-_:]*)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.marko-tag.open.html</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>The beginning of a custom/special HTML tag</string>
 			<key>end</key>
-			<string>&lt;/(\1)&gt;|&lt;/&gt;|/&gt;</string>
+			<string>(&lt;/)(\2)?(&gt;)|(/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.close.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.marko-tag.close.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.close.html</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -980,25 +1004,45 @@
 		<key>tag-name-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;([a-zA-Z0-9]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)([a-zA-Z0-9]+)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.open.html</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>The beginning of a regular HTML tag in non-concise mode</string>
 			<key>end</key>
-			<string>&lt;/(\1)&gt;|&lt;/&gt;|/&gt;</string>
+			<string>(&lt;/)(\2)?(&gt;)|(/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.close.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.close.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.close.html</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -1016,25 +1060,30 @@
 		<key>tag-name-open-tag-only-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(base|br|col|hr|embed|img|input|keygen|link|meta|param|source|track|wbr|lasso-img)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(base|br|col|hr|embed|img|input|keygen|link|meta|param|source|track|wbr|lasso-img)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.open.html</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>HTML tags that are open tag only</string>
 			<key>end</key>
-			<string>&gt;|/&gt;</string>
+			<string>(&gt;|/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.html</string>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -1048,25 +1097,45 @@
 		<key>tag-name-script-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(script)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(script)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.script.html</string>
+					<string>punctuation.definition.marko-tag.begin.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.script.open.html</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>HTML style tag</string>
 			<key>end</key>
-			<string>&lt;/(script)&gt;|&lt;/&gt;|/&gt;</string>
+			<string>(&lt;/)(script)?(&gt;)|/&gt;</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.script.html</string>
+					<string>punctuation.definition.marko-tag.begin.close.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.script.close.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.close.html</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -1084,15 +1153,20 @@
 		<key>tag-name-shorthand-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
 				</dict>
 				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.open.html</string>
+				</dict>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>entity.other.attribute-name.shorthand</string>
@@ -1101,23 +1175,33 @@
 			<key>comment</key>
 			<string>HTML tag with shorthand ID/class parts</string>
 			<key>end</key>
-			<string>&lt;/(\2)&gt;|&lt;/(\2(\3))&gt;|&lt;/&gt;|/&gt;</string>
+			<string>(&lt;/)((\3)(\4)?)?(&gt;)|(/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.html</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.close.html</string>
 				</dict>
 				<key>3</key>
 				<dict>
 					<key>name</key>
+					<string>entity.name.tag.close.html</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
 					<string>entity.other.attribute-name.shorthand</string>
+				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.close.html</string>
+				</dict>
+				<key>6</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -1135,30 +1219,45 @@
 		<key>tag-name-shorthand-no-tag-name-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;([#.][a-zA-Z0-9_#.:-]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)([#.][a-zA-Z0-9_#.:-]+)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.other.attribute-name.shorthand</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>HTML style tag</string>
 			<key>end</key>
-			<string>&lt;/(\1)&gt;|&lt;/&gt;|&lt;/(div)&gt;|/&gt;</string>
+			<string>(&lt;/)(\2|div)(&gt;)|(/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>punctuation.definition.marko-tag.begin.close.html</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-tag.html</string>
+					<string>entity.name.tag.close.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.close.html</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
@@ -1176,25 +1275,45 @@
 		<key>tag-name-style-html</key>
 		<dict>
 			<key>begin</key>
-			<string>&lt;(style)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(style)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.style.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.style.open.html</string>
 				</dict>
 			</dict>
 			<key>comment</key>
 			<string>HTML style tag</string>
 			<key>end</key>
-			<string>&lt;/(style)&gt;|&lt;/&gt;|/&gt;</string>
+			<string>(&lt;/)(style)?(&gt;)|(/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.tag.style.html</string>
+					<string>punctuation.definition.marko-tag.begin.close.html</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.tag.style.close.html</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.close.html</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
