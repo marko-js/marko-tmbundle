@@ -1103,7 +1103,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.marko-tag.begin.html</string>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
 				</dict>
 				<key>2</key>
 				<dict>
