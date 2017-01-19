@@ -62,9 +62,79 @@
 			<key>include</key>
 			<string>#scriptlet</string>
 		</dict>
+		<dict>
+			<key>include</key>
+			<string>#assignment-html</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#assignment-concise</string>
+		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>assignment-concise</key>
+		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
+			<key>begin</key>
+			<string>^\s*</string>
+			<key>beginCaptures</key>
+			<dict/>
+			<key>comment</key>
+			<string>A concise tag name</string>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#html-line-concise</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attr-stuff-concise</string>
+				</dict>
+			</array>
+		</dict>
+		<key>assignment-html</key>
+		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
+			<key>begin</key>
+			<string>(&lt;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.begin.open.html</string>
+				</dict>
+			</dict>
+			<key>comment</key>
+			<string>A concise tag name</string>
+			<key>end</key>
+			<string>(/&gt;)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.marko-tag.end.self-close.html</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#html-line-concise</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attr-stuff-concise</string>
+				</dict>
+			</array>
+		</dict>
 		<key>attr-assignment-concise</key>
 		<dict>
 			<key>applyEndPatternLast</key>
@@ -114,7 +184,7 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>(?:\s+|[,])(?:(ref)|([a-zA-Z][a-zA-Z]*)|(data-[a-zA-Z-]*)|([_a-zA-Z0-9][a-zA-Z0-9:_.-]*))\s*([=])\s*</string>
+			<string>(?:\s+|[,])(?:(ref)|([a-zA-Z][a-zA-Z]*)|(data-[a-zA-Z0-9-]*)|([_a-zA-Z0-9][a-zA-Z0-9:_.-]*))\s*([=])\s*</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -174,7 +244,7 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>\s+(?:([a-zA-Z][a-zA-Z]*)|(data-[a-zA-Z-]*)|([a-zA-Z0-9][a-zA-Z0-9:_.-]+))(?=\s|/&gt;|&gt;|$)</string>
+			<string>\s+(?:([a-zA-Z][a-zA-Z]*)|(data-[a-zA-Z0-9-]*)|([a-zA-Z0-9][a-zA-Z0-9:_.-]+))(?=\s|/&gt;|&gt;|$)</string>
 		</dict>
 		<key>attr-semicolon</key>
 		<dict>
@@ -226,6 +296,12 @@
 							<string>#attr-stuff-concise</string>
 						</dict>
 					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>[,]\s*$</string>
+					<key>end</key>
+					<string>(?=\s)</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1225,12 +1301,18 @@
 					<key>include</key>
 					<string>#tag-name-html</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#assignment-html</string>
+				</dict>
 			</array>
 		</dict>
 		<key>tag-name-concise</key>
 		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
 			<key>begin</key>
-			<string>^\s*(([a-zA-Z0-9_-]+)([.#][a-zA-Z0-9_.#-]*)?)(?=(\s|$|\())</string>
+			<string>^\s*(([a-zA-Z0-9_-]+)([.#][a-zA-Z0-9_.#-]*)?)(?=(\s+(?![=])|$|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1262,8 +1344,10 @@
 		</dict>
 		<key>tag-name-custom-concise</key>
 		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
 			<key>begin</key>
-			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*|[@][a-zA-Z0-9_]+)(?=(\s|$|[(]))</string>
+			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*|[@][a-zA-Z0-9_]+)(?=(\s+(?![=])|$|[(]))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1496,7 +1580,7 @@
 		<key>tag-name-shorthand-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s+(?![=])|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1705,6 +1789,8 @@
 		</dict>
 		<key>tag-script-concise</key>
 		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
 			<key>begin</key>
 			<string>^(\s*)(script)(?=(\s|$|\())</string>
 			<key>beginCaptures</key>
@@ -1771,6 +1857,8 @@
 		</dict>
 		<key>tag-style-concise</key>
 		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
 			<key>begin</key>
 			<string>^(\s*)(style)(?=(\s|$|\())</string>
 			<key>beginCaptures</key>
