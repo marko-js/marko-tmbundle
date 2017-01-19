@@ -1,3 +1,33 @@
+var classNames=["app-checkbox", state.checked && "checked", state.checkboxClassName],
+	foo="bar";
+	
+var classes = {'btn': true, 'active': true};
+var foo = 'bar';
+classes = true
+classes.foo = true
+<classes.foo = true/>
+classes['btn-' + foo] = true;
+<classes['btn-' + foo] = true/>
+var foo='test'
+<div>
+	['foo']
+	<classes['btn-' + foo] = true/>
+</div>
+<button class=classes>Click me</button>
+
+div.foo
+<div.foo class="foo"/>
+
+<div data-widget="foo"
+    data-widget2="bar"
+    another-attribute="foo">
+    <div data-widget="my-really-awesome-weidget-this-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going END">
+        Hello World
+    </div>
+</div>
+
+
+
 var a=1, b=2; c=10 //test
 <var a=1, b=2 c=10 /*test */ />
 
@@ -9,8 +39,6 @@ function foo() {
 
 console.log('test') /*test*/ data-test // test
 <console.log('test') /*test*/ data-test=123/>
-
-
 
 span ref='test' else('test') ${{test}} a = 1 + 2 b = (1 + 2) -- <div>Hello</div>
 span
@@ -34,7 +62,9 @@ span
 <@foo></@foo>
 <@for></@for>
 
-<_for></fors>
+<app-foo include() for(i=1; i<10; i++) test="foo" />
+
+
 @foo
 
 <div></div>
