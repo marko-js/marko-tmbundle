@@ -78,11 +78,11 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>^\s*</string>
+			<string>^\s*[$_A-Za-z]+</string>
 			<key>beginCaptures</key>
 			<dict/>
 			<key>comment</key>
-			<string>A concise tag name</string>
+			<string>A concise JavaScript assignment line</string>
 			<key>end</key>
 			<string>$</string>
 			<key>patterns</key>
@@ -112,7 +112,7 @@
 				</dict>
 			</dict>
 			<key>comment</key>
-			<string>A concise tag name</string>
+			<string>An HTML JavaScript assignment tag</string>
 			<key>end</key>
 			<string>(/&gt;)</string>
 			<key>endCaptures</key>
