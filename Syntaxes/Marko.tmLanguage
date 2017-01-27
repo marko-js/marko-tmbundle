@@ -12,6 +12,10 @@
 	<array>
 		<dict>
 			<key>include</key>
+			<string>#scriptlet</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#comment-concise-line</string>
 		</dict>
 		<dict>
@@ -57,10 +61,6 @@
 		<dict>
 			<key>include</key>
 			<string>#placeholder-patterns</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#scriptlet</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -1073,6 +1073,38 @@
 				</dict>
 			</array>
 		</dict>
+		<key>js-block-html</key>
+		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
+			<key>begin</key>
+			<string>&lt;\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.begin.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}&gt;</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.end.js</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.js</string>
+				</dict>
+			</array>
+		</dict>
 		<key>open-tag-end</key>
 		<dict>
 			<key>begin</key>
@@ -1253,10 +1285,46 @@
 				</dict>
 			</array>
 		</dict>
+		<key>style-block</key>
+		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
+			<key>begin</key>
+			<string>\{</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.begin.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\}</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.section.scope.end.js</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.css</string>
+				</dict>
+			</array>
+		</dict>
 		<key>tag-concise</key>
 		<dict>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#js-block</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag-name-custom-concise</string>
@@ -1273,6 +1341,10 @@
 			<string>HTML tag within the non-concise syntax</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#js-block-html</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#tag-name-open-tag-only-html</string>
@@ -1332,6 +1404,18 @@
 			<string>$</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.terminator.statement.js</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([;])\s*$</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#html-line-concise</string>
@@ -1747,6 +1831,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#style-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -1828,7 +1916,7 @@
 			<key>begin</key>
 			<string>(\s*[-][-]+)</string>
 			<key>comment</key>
-			<string>HTML script tag with nested JavaScript code</string>
+			<string>HTML script tag with nested CSS code</string>
 			<key>end</key>
 			<string>(\1)[.]*$</string>
 			<key>patterns</key>
@@ -1877,6 +1965,10 @@
 			<string>meta.tag.other</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#style-block</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#attr-stuff-concise</string>
