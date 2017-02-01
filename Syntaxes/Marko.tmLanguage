@@ -1646,7 +1646,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.tag.open.html</string>
+					<string>support.function.marko-tag.open.html</string>
 				</dict>
 			</dict>
 			<key>comment</key>
