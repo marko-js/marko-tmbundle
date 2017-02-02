@@ -1663,7 +1663,7 @@
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.tag.close.html</string>
+					<string>support.function.marko-tag.close.html</string>
 				</dict>
 				<key>3</key>
 				<dict>
