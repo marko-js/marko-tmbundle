@@ -714,6 +714,33 @@
 					<string>#expression-operator-special</string>
 				</dict>
 				<dict>
+					<key>match</key>
+					<string>[.]([\p{L}\p{Nl}$_][\p{L}\p{Nl}$\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*)\b</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(out)[.](global)\b</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(input|state|JSON|out)\b</string>
+					<key>name</key>
+					<string>entity.name.type</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#expression-special-class</string>
 				</dict>
@@ -918,9 +945,9 @@
 		<key>expression-operator-special</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;!\.|\$)\b(delete|in|instanceof|new|typeof\s*|void|with)\b(?!\$)</string>
+			<string>(?&lt;!\.|\$)\b(delete|in|instanceof|new|typeof\s*|void|with|from|to|step)\b(?!\$)</string>
 			<key>name</key>
-			<string>keyword.operator.js</string>
+			<string>keyword</string>
 		</dict>
 		<key>expression-operator-unary</key>
 		<dict>
@@ -1181,6 +1208,41 @@
 					</array>
 				</dict>
 				<dict>
+					<key>applyEndPatternLast</key>
+					<integer>1</integer>
+					<key>begin</key>
+					<string>\[</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.scope.begin.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\]</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.scope.end.js</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#js</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>[.]([\p{L}\p{Nl}$_][\p{L}\p{Nl}$\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}]*)\b</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#expression</string>
 				</dict>
@@ -1227,8 +1289,25 @@
 					<string>entity.other.inherited-class.js</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+					</dict>
 					<key>match</key>
-					<string>\b(console|JSON)\b</string>
+					<string>\b(require)[.](resolve)\b</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(console|JSON|event|window|setTimeout|setInterval|require)\b</string>
 					<key>name</key>
 					<string>entity.name.type</string>
 				</dict>
