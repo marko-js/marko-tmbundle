@@ -1,123 +1,53 @@
-var name = 'Frank';
-var name = '123';
+import fs from 'fs';
+import path from 'path';
 
-var classNames=["app-checkbox", state.checked && "checked", state.checkboxClassName],
-	foo="bar";
-
-
-<div></div>
-
-<% test %>
-
-<div></div>
-
-style {
-	.foo {
-		background-color: 'red';
+class {
+	hello() {
+		var input = this.input;
+		var foo = this.foo;
+		
+		var foo = `te${ console.log('test') }st`;
+		var bar = 'test';
+		console.log('test');
 	}
 }
 
-<style>
-	.foo {
-		background-color: 'red';
-	}
-</style>
+$ var dependencies = [
+    require.resolve("./browser.json"),
+    "require-run: " + require.resolve('./client'),
+    "require-run: " + require.resolve('../benchmarks/' + out.global.benchmark.name + "/client.js")
+];
 
+<lasso-page dependencies=dependencies name=out.global.benchmark.name cache-key=out.global.benchmark.name />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>${out.global.benchmark.name} | Marko Benchmark</title>
+        <lasso-head/>
+        <link href="/benchmarks/${out.global.benchmark.name}/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>${out.global.benchmark.name} | Marko Benchmark</h1>
 
-var classes = {'btn': true, 'active': true};
-var foo = 'bar';
-<{	include = '#js-block-html'; }>
-<div></div>
+        <app benchmark=out.global.benchmark/>
 
-classes = true
-classes.foo = true
-<classes.foo = true/>
-classes['btn-' + foo] = true;
-<classes['btn-' + foo] = true/>
-var foo='test'
-<div>
-	['foo']
-	<classes['btn-' + foo] = true/>
-</div>
-<button class=classes>Click me</button>
+        <!--
+        Inject the body <script> tags to include the required client-side code:
+        -->
+        <lasso-body/>
+        <init-widgets/>
 
-div.foo
-<div.foo class="foo"/>
+        <for(bundle in data.bundles)>
+            <script src=bundle></script>
+        </for>
 
-<div data-widget="foo"
-    data-widget2="bar"
-    another-attribute="foo">
-	
-	
-	<{	include = '#js-block-html'; }>
-    <div data-widget="my-really-awesome-weidget-this-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going-keeps-going-and-going-and-going END">
-        Hello World
-    </div>
-</div>
-
-
-
-var a=1, b=2; c=10 //test
-<var a=1, b=2 c=10 /*test */ />
-
-<div a = 1,d=2> <span></span></div>
-
-function foo() {
-	var a = test + 1, c = 1;
-}
-
-console.log('test') /*test*/ data-test // test
-<console.log('test') /*test*/ data-test=123/>
-
-span ref='test' else('test') ${{test}} a = 1 + 2 b = (1 + 2) -- <div>Hello</div>
-span
-	// Test
-	/*
-	*/
-	--
-	Hello World
-	div
-span
-
-span
-	--
-	Hello <b>World</b>
-	--
-	div
-span
-
-
-
-<@foo></@foo>
-<@for></@for>
-
-<app-foo include() for(i=1; i<10; i++) test="foo" />
-
-
-@foo
-
-<div></div>
-
-div.foo-bar
-div.foo-df
-div
-
-
-<i18n-use i18nSampleAppSearchResults="SampleApp/search-results"/>
-
-<div.foo-bar foo="bar"></div>
-<div.foo></div>
-
-app-foo
-
-<app-foo include() for(i=1; i<10; i++) test="foo" />
-
-<div.foo>
-	<span></span>
-</div.foo>
-
-<div.foo>
-	<span.bar></span>
-</div>
-
-<img src="test"/>
+        <!--
+        If launched using the browser-refresh app launcher then a <script>
+        tag will be injected to enable instant page refreshes when any
+        file is modified. See:
+        https://www.npmjs.com/package/browser-refresh
+        -->
+        <browser-refresh/>
+    </body>
+</html>

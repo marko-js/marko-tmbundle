@@ -679,6 +679,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#expression-string-template</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#expression-group-parens</string>
 				</dict>
 				<dict>
@@ -735,10 +739,62 @@
 					<string>\b(out)[.](global)\b</string>
 				</dict>
 				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>variable.language.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(this)[.](input|state)\b</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\b(input|state|JSON|out)\b</string>
 					<key>name</key>
 					<string>entity.name.type</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(let|var)\b</string>
+					<key>name</key>
+					<string>storage.type.var.js</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.type</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(require)[.](resolve)\b</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(console|JSON|event|window|setTimeout|setInterval|require)\b</string>
+					<key>name</key>
+					<string>entity.name.type</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(this|arguments)\b</string>
+					<key>name</key>
+					<string>variable.language.js</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1001,6 +1057,18 @@
 				</dict>
 			</array>
 		</dict>
+		<key>expression-string-escapes</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
+					<key>name</key>
+					<string>constant.character.escape.js</string>
+				</dict>
+			</array>
+		</dict>
 		<key>expression-string-single</key>
 		<dict>
 			<key>begin</key>
@@ -1028,14 +1096,82 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
-					<key>name</key>
-					<string>constant.character.escape.js</string>
+					<key>include</key>
+					<string>#expression-string-escapes</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#placeholder-patterns</string>
+				</dict>
+			</array>
+		</dict>
+		<key>expression-string-template</key>
+		<dict>
+			<key>begin</key>
+			<string>`</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>`</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.js</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.other.template.js</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression-string-escapes</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\$\{</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.embedded.begin.js</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>source.js</string>
+					<key>end</key>
+					<string>(\})</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.section.embedded.end.js</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>source.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.embedded.line.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#expression</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -1254,12 +1390,6 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(let|var)\b</string>
-					<key>name</key>
-					<string>storage.type.var.js</string>
-				</dict>
-				<dict>
-					<key>match</key>
 					<string>(\s+|\b)(\=\&gt;)(\s+|\b)</string>
 					<key>name</key>
 					<string>storage.type.function.arrow.js</string>
@@ -1287,35 +1417,6 @@
 					<string>\bextends\b</string>
 					<key>name</key>
 					<string>entity.other.inherited-class.js</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.type</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.type</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>\b(require)[.](resolve)\b</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(console|JSON|event|window|setTimeout|setInterval|require)\b</string>
-					<key>name</key>
-					<string>entity.name.type</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\b(this|arguments)\b</string>
-					<key>name</key>
-					<string>variable.language.js</string>
 				</dict>
 				<dict>
 					<key>begin</key>
