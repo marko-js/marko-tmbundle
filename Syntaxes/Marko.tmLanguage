@@ -2214,11 +2214,11 @@
 		<key>tag-script-body-line</key>
 		<dict>
 			<key>begin</key>
-			<string>\s--\s</string>
+			<string>\s+-[-]+\s</string>
 			<key>comment</key>
 			<string>HTML script tag with nested JavaScript code</string>
 			<key>end</key>
-			<string>(?-$)</string>
+			<string>(?=\n)</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -2245,8 +2245,6 @@
 			<string>HTML script tag with nested JavaScript code</string>
 			<key>end</key>
 			<string>^(?!(\1\s)|\s*$)</string>
-			<key>name</key>
-			<string>meta.tag.other</string>
 			<key>patterns</key>
 			<array>
 				<dict>

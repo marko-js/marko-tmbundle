@@ -1,6 +1,25 @@
 import fs from 'fs';
 import path from 'path';
 
+script
+	-- { test: 'foo' } console.log('Hello');
+	
+script -- console.log('Hello');
+
+script
+	--
+	console.log('Hello');
+	--
+	
+<script>
+	console.log('Hello');
+	window.test();
+</script>
+
+script --
+	console.log('test')
+	--
+	
 class {
 	hello() {
 		var input = this.input;
