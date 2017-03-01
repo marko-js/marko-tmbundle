@@ -757,13 +757,13 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(input|state|JSON|out)\b</string>
+					<string>\b(input|state|component|JSON|out)\b</string>
 					<key>name</key>
 					<string>entity.name.type</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(let|var)\b</string>
+					<string>\b(let|var|const)\b</string>
 					<key>name</key>
 					<string>storage.type.var.js</string>
 				</dict>
