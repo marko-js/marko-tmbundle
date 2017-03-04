@@ -1235,6 +1235,42 @@
 				</dict>
 			</array>
 		</dict>
+		<key>html-line-block-concise</key>
+		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>1</integer>
+			<key>begin</key>
+			<string>\s*([-][-]+)\n</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.operator.marko.blah</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?!\2)|(\2\1)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#cdata</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-html</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comment-html</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#placeholder-patterns</string>
+				</dict>
+			</array>
+		</dict>
 		<key>html-line-concise</key>
 		<dict>
 			<key>begin</key>
@@ -1772,6 +1808,10 @@
 			<string>(?=\n)</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#html-line-block-concise</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#html-line-concise</string>
