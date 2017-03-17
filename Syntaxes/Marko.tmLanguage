@@ -2272,7 +2272,7 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>^(\s*)(script)(?=(\s|$|\())</string>
+			<string>^(\s*)(script)(?!(.*\ssrc=".*"))(?=(\s|$|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>2</key>
