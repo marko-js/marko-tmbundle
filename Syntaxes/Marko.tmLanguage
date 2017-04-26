@@ -248,6 +248,19 @@
 				</dict>
 			</array>
 		</dict>
+		<key>attr-special</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.marko-attribute</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>\s+(else)\b</string>
+		</dict>
 		<key>attr-stuff-concise</key>
 		<dict>
 			<key>patterns</key>
@@ -316,6 +329,10 @@
 				<dict>
 					<key>include</key>
 					<string>#comment-block</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#attr-special</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -1827,7 +1844,7 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*|[@][a-zA-Z0-9_]+)(?=(\s+(?![=])|$|[(]))</string>
+			<string>^\s*(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+([:-])[a-zA-Z0-9_:-]*|[@][a-zA-Z0-9_-]+)(?=(\s+(?![=])|$|[(]))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1855,7 +1872,7 @@
 		<key>tag-name-custom-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+[-:][a-zA-Z0-9\-_:]*|[@][a-zA-Z0-9_]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(for|if|unless|else-if|else|var|assign|macro|invoke|include|app|await|[a-zA-Z0-9_]+[-:][a-zA-Z0-9\-_:]*|[@][a-zA-Z0-9_-]+)(?=(&gt;|/&gt;|\s|\())</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
