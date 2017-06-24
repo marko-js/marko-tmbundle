@@ -956,7 +956,7 @@
 		<key>expression-hex</key>
 		<dict>
 			<key>match</key>
-			<string>\b0[xX]\h+\b</string>
+			<string>\b0[xX][0-9A-Fa-f]+\b</string>
 			<key>name</key>
 			<string>constant.numeric.hex.js</string>
 		</dict>
@@ -1064,7 +1064,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)</string>
+					<string>\\(x[0-9A-Fa-f]{2}|[0-2][0-7]{0,2}|3[0-6][0-7]|37[0-7]?|[4-7][0-7]?|.)</string>
 					<key>name</key>
 					<string>constant.character.escape.js</string>
 				</dict>
@@ -1080,7 +1080,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
+					<string>\\(x[0-9A-Fa-f]{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)</string>
 					<key>name</key>
 					<string>constant.character.escape.js</string>
 				</dict>
