@@ -15,5 +15,10 @@ See: [sublime-marko](https://github.com/merwan7/sublime-marko)
     mkdir -p ~/Library/Application\ Support/TextMate/Managed/Bundles
     cd ~/Library/Application\ Support/TextMate/Managed/Bundles
     git clone https://github.com/marko-js/marko-tmbundle.git Marko.tmbundle
+    
+### Intellij IDEA / Webstorm
+
+* IDEA: Install TextMate plugin, then install this `marko-tmbundle` (clone this repo and point the TextMate plugin to the location) - https://www.jetbrains.com/help/idea/using-textmate-bundles.html
+* WebStorm: TextMate support is already present, just install this `marko-tmbundle` - https://www.jetbrains.com/help/webstorm/2017.2/importing-textmate-bundles.html
 
 Patches for additions are always welcome.
