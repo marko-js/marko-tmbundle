@@ -21,4 +21,9 @@ See: [sublime-marko](https://github.com/merwan7/sublime-marko)
 * IDEA: Install TextMate plugin, then install this `marko-tmbundle` (clone this repo and point the TextMate plugin to the location) - https://www.jetbrains.com/help/idea/using-textmate-bundles.html
 * WebStorm: TextMate support is already present, just install this `marko-tmbundle` - https://www.jetbrains.com/help/webstorm/2017.2/importing-textmate-bundles.html
 
+### Jetbrains IntelliJ IDEA / Webstorm / etc
+
+- Install Textmate bundles support plugin inside IDE
+- See: [Importing TextMate Bundles](https://www.jetbrains.com/help/phpstorm/2016.2/importing-textmate-bundles.html)
+
 Patches for additions are always welcome.
