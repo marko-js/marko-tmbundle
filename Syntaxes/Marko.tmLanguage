@@ -132,7 +132,7 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-attribute</string>
+					<string>entity.other.attribute-name.html</string>
 				</dict>
 				<key>2</key>
 				<dict>
@@ -147,7 +147,7 @@
 				<key>4</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-attribute</string>
+					<string>entity.other.attribute-name.html</string>
 				</dict>
 				<key>5</key>
 				<dict>
@@ -214,7 +214,7 @@
 				<key>3</key>
 				<dict>
 					<key>name</key>
-					<string>support.function.marko-attribute</string>
+					<string>entity.other.attribute-name.html</string>
 				</dict>
 			</dict>
 			<key>match</key>
