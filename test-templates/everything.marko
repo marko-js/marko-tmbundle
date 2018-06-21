@@ -1,0 +1,118 @@
+
+
+import fs from 'fs';
+import path from 'path';
+
+script
+	-- { test: 'foo' } console.log('Hello');
+	
+script -- console.log('Hello');
+
+script
+	--
+	console.log('Hello');
+	--
+	
+<script>
+	console.log('Hello');
+	window.test();
+</script>
+
+script --
+	console.log('test')
+	--
+	
+class {
+	hello() {
+		var input = this.input;
+		var foo = this.foo;
+		
+		var foo = `te${ console.log('test') }st`;
+		var bar = 'test';
+		console.log('test');
+	}
+}
+
+$ var dependencies = [
+    require.resolve("./browser.json"),
+    "require-run: " + require.resolve('./client'),
+    "require-run: " + require.resolve('../benchmarks/' + out.global.benchmark.name + "/client.js")
+];
+
+hello ...console.log() ...(foo.bar(1,2,3))
+hello x=foo y=(foo.bar(1,2,3))
+
+<hello ...console.log() ...(foo.bar(1,2,3))/>
+<hello x=foo y=(foo.bar(1,2,3))/>
+
+<${hello} ...foo ...(foo.bar(1,2,3))/>
+<${hello} x=foo y=(foo.bar(1,2,3))/>
+
+${hello} ...foo ...(foo.bar(1,2,3))
+${hello} x=foo y=(foo.bar(1,2,3))
+
+${lasso} dependencies=dependencies name=out.global.benchmark.name cache-key=out.global.benchmark.name
+
+<${lasso+{ x: 1 }} dependencies=dependencies name=out.global.benchmark.name cache-key=out.global.benchmark.name/>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>${out.global.benchmark.name} | Marko Benchmark</title>
+        <lasso-head/>
+        <link href="/benchmarks/${out.global.benchmark.name}/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>${out.global.benchmark.name} | Marko Benchmark</h1>
+
+        <app benchmark=out.global.benchmark/>
+
+        <!--
+        Inject the body <script> tags to include the required client-side code:
+        -->
+        <lasso-body/>
+        <init-widgets/>
+
+        <for(bundle in data.bundles)>
+            <script src=bundle></script>
+        </for>
+
+        <!--
+        If launched using the browser-refresh app launcher then a <script>
+        tag will be injected to enable instant page refreshes when any
+        file is modified. See:
+        https://www.npmjs.com/package/browser-refresh
+        -->
+        <browser-refresh/>
+    </body>
+</html>
+
+import a from "b";
+import { c } from "d";
+static {
+  thing.stuff();
+}
+class {
+  onClick() {
+  }
+}
+<a b c="" d=1 e=console.log() f=(1 + 2) g={ a: 1 } h=[1] ...i ...(console.log.stuff()) j:k="" l('lol') m:n('lol')>
+  <@child1 b c="" d=1 e=fn() f=(1 + 2) g={ a: 1 } h=[1] ...i ...(console.log.stuff()) j:k="" l('lol') m:n('lol')/>
+  <@child2>Body</@child2>
+  
+  <child3 b c="" d=1 e=console.log() f=(1 + 2) g={ a: 1 } h=[1] ...i ...(console.log.stuff()) j:k="" l('lol') m:n('lol')/>
+  <child4>Body</child4>
+  <${'str'} b c="" d=1 e=console.log() f=(1 + 2) g={ a: 1 } h=[1] ...i ...(console.log.stuff()) j:k="" l('lol') m:n('lol')/>
+  <${'str'}>Body</>
+  $ console.log(identifier);
+  ${identifier}
+  $!{identifier}
+  ${identifier.toLowerCase()}
+</a>
+
+<html-comment>
+    If launched using the browser-refresh app launcher then a <script>
+    tag will be injected to enable instant page refreshes when any
+    file is modified. See:
+    https://www.npmjs.com/package/browser-refresh
+</html-comment>
