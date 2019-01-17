@@ -1892,7 +1892,7 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>^\s*(([a-zA-Z0-9_-]+)([.#][a-zA-Z0-9_.#-]*)?)(?=(\s+(?![=])|$|\())</string>
+			<string>^\s*(([a-zA-Z0-9_-]+)([.#][a-zA-Z0-9_.#-]*)?)(?=(\s+(?![=])|$|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1914,6 +1914,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#html-line-block-concise</string>
 				</dict>
 				<dict>
@@ -1931,7 +1935,7 @@
 			<key>applyEndPatternLast</key>
 			<integer>1</integer>
 			<key>begin</key>
-			<string>^\s*(for|if|unless|while|else-if|else|var|assign|macro|invoke|include|await|[a-zA-Z0-9_]+([:])[a-zA-Z0-9_:-]*|[@][a-zA-Z0-9_-]+)(?=(\s+(?![=])|$|[(]))</string>
+			<string>^\s*(for|if|unless|while|else-if|else|var|assign|macro|invoke|include|await|[a-zA-Z0-9_]+([:])[a-zA-Z0-9_:-]*|[@][a-zA-Z0-9_-]+)(?=(\s+(?![=])|$|[(]|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -1948,6 +1952,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#html-line-concise</string>
 				</dict>
 				<dict>
@@ -1959,7 +1967,7 @@
 		<key>tag-name-custom-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(for|if|unless|while|else-if|else|var|assign|macro|invoke|include|await|[a-zA-Z0-9_]+[:][a-zA-Z0-9\-_:]*|[@][a-zA-Z0-9_-]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(for|if|unless|while|else-if|else|var|assign|macro|invoke|include|await|[a-zA-Z0-9_]+[:][a-zA-Z0-9\-_:]*|[@][a-zA-Z0-9_-]+)(?=(&gt;|/&gt;|\s|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2004,6 +2012,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -2027,6 +2039,10 @@
 				<dict>
 					<key>include</key>
 					<string>#placeholder</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#tag-params</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2085,6 +2101,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -2096,7 +2116,7 @@
 		<key>tag-name-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)([a-zA-Z0-9-]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)([a-zA-Z0-9-]+)(?=(&gt;|/&gt;|\s|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2141,6 +2161,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -2152,7 +2176,7 @@
 		<key>tag-name-open-tag-only-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(base|br|col|hr|embed|img|input|keygen|link|meta|param|source|track|wbr|lasso-img)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(base|br|col|hr|embed|img|input|keygen|link|meta|param|source|track|wbr|lasso-img)(?=(&gt;|/&gt;|\s|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2182,6 +2206,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 			</array>
@@ -2189,7 +2217,7 @@
 		<key>tag-name-script-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(script)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(script)(?=(&gt;|/&gt;|\s|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2234,6 +2262,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -2245,7 +2277,7 @@
 		<key>tag-name-shorthand-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s+(?![=])|\())</string>
+			<string>(&lt;)(([a-zA-Z0-9_-]+)([#.][a-zA-Z0-9_#.:-]+))(?=(&gt;|/&gt;|\s+(?![=])|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2300,6 +2332,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -2311,7 +2347,7 @@
 		<key>tag-name-shorthand-no-tag-name-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)([#.][a-zA-Z0-9_#.:-]+)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)([#.][a-zA-Z0-9_#.:-]+)(?=(&gt;|/&gt;|\s|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2356,6 +2392,10 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
@@ -2367,7 +2407,7 @@
 		<key>tag-name-style-html</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)(style)(?=(&gt;|/&gt;|\s|\())</string>
+			<string>(&lt;)(style)(?=(&gt;|/&gt;|\s|\(|\|))</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -2412,11 +2452,47 @@
 			<array>
 				<dict>
 					<key>include</key>
+					<string>#tag-params</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#attr-stuff-html</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#open-tag-end-style</string>
+				</dict>
+			</array>
+		</dict>
+		<key>tag-params</key>
+		<dict>
+			<key>applyEndPatternLast</key>
+			<integer>0</integer>
+			<key>begin</key>
+			<string>\|</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.pipe.js</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>\|</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>meta.pipe.js</string>
+				</dict>
+			</dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#expression</string>
 				</dict>
 			</array>
 		</dict>

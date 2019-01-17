@@ -76,6 +76,10 @@ ${lasso} dependencies=dependencies name=out.global.benchmark.name cache-key=out.
         <for(bundle in data.bundles)>
             <script src=bundle></script>
         </for>
+		
+        <for|bundle| of=data.bundles>
+            <script src=bundle></script>
+        </for>
 
         <!--
         If launched using the browser-refresh app launcher then a <script>
@@ -109,6 +113,24 @@ class {
   $!{identifier}
   ${identifier.toLowerCase()}
 </a>
+
+<mouse|position| attr=123>
+  The mouse is at ${position.x}, ${position.y}
+</mouse>
+
+<mouse|{ x=a|input.flag, y=3 }| foo=123>
+  The mouse is at ${x}, ${y}
+</mouse>
+
+mouse|position| attr=123
+  -- The mouse is at ${position.x}, ${position.y}
+
+mouse|{ x=a|input.flag, y=3 }| foo=123
+  -- The mouse is at ${x}, ${y}
+
+<both({ x, y:3 })|{ param=123||2 }| attr=123>
+  Content
+</both>
 
 <html-comment>
     If launched using the browser-refresh app launcher then a <script>
