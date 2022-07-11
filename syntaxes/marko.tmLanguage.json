@@ -87,12 +87,13 @@
           "comment": "Attribute with optional value",
           "name": "meta.marko-attribute",
           "applyEndPatternLast": 1,
-          "begin": "(?:(key|on[a-zA-Z0-9_$-]+|[a-zA-Z0-9_$]+Change|no-update(?:-body)?(?:-if)?)|([a-zA-Z0-9_$][a-zA-Z0-9_$-]*))(:[a-zA-Z0-9_$][a-zA-Z0-9_$-]*)?",
+          "begin": "(?:(key|on[a-zA-Z0-9_$-]+|[a-zA-Z0-9_$]+Change|no-update(?:-body)?(?:-if)?)|([a-zA-Z0-9_$][a-zA-Z0-9_$-]*)|(#[a-zA-Z0-9_$][a-zA-Z0-9_$-]*))(:[a-zA-Z0-9_$][a-zA-Z0-9_$-]*)?",
           "end": "(?=.|$)",
           "beginCaptures": {
             "1": { "name": "support.type.attribute-name.marko" },
             "2": { "name": "entity.other.attribute-name.marko" },
-            "3": { "name": "support.function.attribute-name.marko" }
+            "3": { "name": "support.function.attribute-name.marko" },
+            "4": { "name": "support.function.attribute-name.marko" }
           },
           "patterns": [
             { "include": "#html-args-or-method" },
@@ -156,6 +157,7 @@
             { "include": "#cdata" },
             { "include": "#doctype" },
             { "include": "#declaration" },
+            { "include": "#javascript-comments" },
             { "include": "#html-comment" },
             { "include": "#tag-html" },
             {
@@ -390,7 +392,7 @@
             {
               "comment": "Concise Marko html-comment tag",
               "begin": "^(\\s*)(?=html-comment\\b)",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#concise-comment-block" },
@@ -400,7 +402,7 @@
             {
               "comment": "Concise style tag less",
               "begin": "^(\\s*)(?=style\\b[^\\s]*\\.less\\b)",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#concise-style-block-less" },
@@ -410,7 +412,7 @@
             {
               "comment": "Concise style tag scss",
               "begin": "^(\\s*)(?=style\\b[^\\s]*\\.scss\\b)",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#concise-style-block-scss" },
@@ -420,7 +422,7 @@
             {
               "comment": "Concise style tag js/ts",
               "begin": "^(\\s*)(?=style\\b[^\\s]*\\.[tj]s\\b)",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#concise-script-block" },
@@ -430,7 +432,7 @@
             {
               "comment": "Concise style tag",
               "begin": "^(\\s*)(?=style\\b)",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#concise-style-block" },
@@ -440,7 +442,7 @@
             {
               "comment": "Concise script tag",
               "begin": "^(\\s*)(?=script\\b)",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#concise-script-block" },
@@ -450,7 +452,7 @@
             {
               "comment": "Normal concise tag",
               "begin": "^([ \\t]*)(?=[a-zA-Z0-9_$@.#])",
-              "while": "(?=^\\1\\s+(\\S|$))",
+              "while": "(?=^(?:[})\\]`]|*/|\\1\\s+(\\S|$)))",
               "patterns": [
                 { "include": "#concise-open-tag-content" },
                 { "include": "#content-concise-mode" }
@@ -503,6 +505,7 @@
         { "include": "#cdata" },
         { "include": "#doctype" },
         { "include": "#declaration" },
+        { "include": "#javascript-comments" },
         { "include": "#html-comment" },
         { "include": "#invalid-close-tag" },
         { "include": "#tag-html" },
@@ -630,6 +633,7 @@
     "javascript-expression": {
       "comment": "Matches JavaScript source code, but always continues for certain types of expressions.",
       "patterns": [
+        { "include": "#javascript-comments" },
         {
           "comment": "We must match the some expressions ourselves since otherwise the js grammar can overstep.",
           "match": "(?:\\s*\\b(?:as|await|extends|in|instanceof|keyof|new|typeof|void))+\\s+(?![:=/,;>])[a-zA-Z0-9_$@#]*",
@@ -722,7 +726,34 @@
               "match": "[a-zA-Z$_][0-9a-zA-Z$_]*",
               "name": "variable.other.constant.object.ts"
             },
-            { "include": "source.ts#destructuring-variable" },
+            {
+              "comment": "Match object pattern",
+              "begin": "{",
+              "end": "}",
+              "patterns": [
+                { "include": "source.ts#object-binding-element" },
+                { "include": "#javascript-expression" }
+              ],
+              "captures": {
+                "0": {
+                  "name": "punctuation.definition.binding-pattern.object.ts"
+                }
+              }
+            },
+            {
+              "comment": "Match array pattern",
+              "begin": "\\[",
+              "end": "]",
+              "patterns": [
+                { "include": "source.ts#array-binding-element" },
+                { "include": "#javascript-expression" }
+              ],
+              "captures": {
+                "0": {
+                  "name": "punctuation.definition.binding-pattern.array.ts"
+                }
+              }
+            },
             {
               "comment": "Match type",
               "begin": "\\s*(:)(?!=)",
