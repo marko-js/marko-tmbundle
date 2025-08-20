@@ -2561,7 +2561,7 @@
             <key>comment</key>
             <string>HTML normal tag</string>
             <key>begin</key>
-            <string>\s*(&lt;)(?=[.#$]|([a-zA-Z0-9_$@]+))</string>
+            <string>\s*(&lt;)(?=[.#$]|([a-zA-Z0-9_$@-]+))</string>
             <key>end</key>
             <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
             <key>patterns</key>
