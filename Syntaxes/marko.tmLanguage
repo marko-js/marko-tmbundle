@@ -2168,7 +2168,7 @@
             <key>begin</key>
             <string>\s*(&lt;)(?=((?:html-)?style)\b[^\s]*\.less\b)</string>
             <key>end</key>
-            <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
+            <string>/&gt;|(?&lt;=&lt;/&gt;)|(?&lt;=&lt;/\2&gt;)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2247,7 +2247,7 @@
             <key>begin</key>
             <string>\s*(&lt;)(?=((?:html-)?style)\b[^\s]*\.scss\b)</string>
             <key>end</key>
-            <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
+            <string>/&gt;|(?&lt;=&lt;/&gt;)|(?&lt;=&lt;/\2&gt;)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2326,7 +2326,7 @@
             <key>begin</key>
             <string>\s*(&lt;)(?=((?:html-)?style)\b[^\s]*\.[tj]s\b)</string>
             <key>end</key>
-            <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
+            <string>/&gt;|(?&lt;=&lt;/&gt;)|(?&lt;=&lt;/\2&gt;)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2405,7 +2405,7 @@
             <key>begin</key>
             <string>\s*(&lt;)(?=((?:html-)?style)\b)</string>
             <key>end</key>
-            <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
+            <string>/&gt;|(?&lt;=&lt;/&gt;)|(?&lt;=&lt;/\2&gt;)</string>
             <key>beginCaptures</key>
             <dict>
               <key>1</key>
@@ -2484,7 +2484,7 @@
             <key>begin</key>
             <string>\s*(&lt;)(?=((?:html-)?script)\b)</string>
             <key>end</key>
-            <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
+            <string>/&gt;|(?&lt;=&lt;/&gt;)|(?&lt;=&lt;/\2&gt;)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2563,7 +2563,7 @@
             <key>begin</key>
             <string>\s*(&lt;)(?=[.#$]|([a-zA-Z0-9_$@-]+))</string>
             <key>end</key>
-            <string>/&gt;|(?&lt;=&lt;/&gt;|&lt;/\2&gt;)</string>
+            <string>/&gt;|(?&lt;=&lt;/&gt;)|(?&lt;=&lt;/\2&gt;)</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -2576,7 +2576,7 @@
                 <key>begin</key>
                 <string>&gt;</string>
                 <key>end</key>
-                <string>\s*(&lt;/)([a-zA-Z0-9_$:@.#-]+)?(.*?)(&gt;)</string>
+                <string>\s*(&lt;/)([a-zA-Z0-9_$:@.#-]+)?([^&gt;]*)(&gt;)</string>
                 <key>patterns</key>
                 <array>
                   <dict>
@@ -2831,7 +2831,7 @@
         <key>name</key>
         <string>invalid.illegal.character-not-allowed-here.marko</string>
         <key>begin</key>
-        <string>\s*&lt;/.*?</string>
+        <string>\s*&lt;/[^&gt;]*</string>
         <key>end</key>
         <string>&gt;</string>
       </dict>
