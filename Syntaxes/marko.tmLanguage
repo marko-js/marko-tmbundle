@@ -292,7 +292,7 @@
             <key>begin</key>
             <string>(\.\.\.)</string>
             <key>end</key>
-            <string>(?=[,;\]]|/&gt;|(?&lt;=[^=&gt;])&gt;|(?&lt;!^|[!~*%&amp;^|?:]|[!~*%&amp;^|?/&lt;&gt;+=-]=|[=&gt;]&gt;|[^.]\.|[^-]-|[^+]\+|[a-zA-Z0-9%).&lt;\]}]\s/|[^.$\w]await|[^.$\w]async|[^.$\w]class|[^.$\w]function|[^.$\w]keyof|[^.$\w]new|[^.$\w]readonly|[^.$\w]infer|[^.$\w]typeof|[^.$\w]void)\s+(?![\n{(+!~*%&amp;^|?:]|[&lt;&gt;/=-]=|[=&gt;]&gt;|\.[^.]|-[^-]|/[^&gt;]|(?:in|instanceof|satisfies|as|extends)\s+[^:=/,;&gt;]))</string>
+            <string>(?=[,;\]]|/&gt;|(?&lt;=[^=&gt;])&gt;|(?&lt;!^|[~*%&amp;^|?:]|^!|[^\w$)\]]!|[^.$\w]await!|[^.$\w]async!|[^.$\w]class!|[^.$\w]function!|[^.$\w]keyof!|[^.$\w]new!|[^.$\w]readonly!|[^.$\w]infer!|[^.$\w]typeof!|[^.$\w]void!|[^.$\w]delete!|[^.$\w]in!|[^.$\w]instanceof!|[!~*%&amp;^|?/&lt;&gt;+=-]=|[=&gt;]&gt;|[^.]\.|[^-]-|[^+]\+|[a-zA-Z0-9%).&lt;\]}]\s/|[^.$\w]await|[^.$\w]async|[^.$\w]class|[^.$\w]function|[^.$\w]keyof|[^.$\w]new|[^.$\w]readonly|[^.$\w]infer|[^.$\w]typeof|[^.$\w]void|[^.$\w]delete)\s+(?![\n{(+!~*%&amp;^|?:]|[&lt;&gt;/=-]=|[=&gt;]&gt;|\.[^.]|-[^-]|/[^&gt;]|(?:in|instanceof|satisfies|as|extends)\s+[^:=/,;&gt;]))</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -342,7 +342,7 @@
         <key>begin</key>
         <string>\s*(:?=)\s*</string>
         <key>end</key>
-        <string>(?=[,;\]]|/&gt;|(?&lt;=[^=&gt;])&gt;|(?&lt;!^|[!~*%&amp;^|?:]|[!~*%&amp;^|?/&lt;&gt;+=-]=|[=&gt;]&gt;|[^.]\.|[^-]-|[^+]\+|[a-zA-Z0-9%).&lt;\]}]\s/|[^.$\w]await|[^.$\w]async|[^.$\w]class|[^.$\w]function|[^.$\w]keyof|[^.$\w]new|[^.$\w]readonly|[^.$\w]infer|[^.$\w]typeof|[^.$\w]void)\s+(?![\n{(+!~*%&amp;^|?:]|[&lt;&gt;/=-]=|[=&gt;]&gt;|\.[^.]|-[^-]|/[^&gt;]|(?:in|instanceof|satisfies|as|extends)\s+[^:=/,;&gt;]))</string>
+        <string>(?=[,;\]]|/&gt;|(?&lt;=[^=&gt;])&gt;|(?&lt;!^|[~*%&amp;^|?:]|^!|[^\w$)\]]!|[^.$\w]await!|[^.$\w]async!|[^.$\w]class!|[^.$\w]function!|[^.$\w]keyof!|[^.$\w]new!|[^.$\w]readonly!|[^.$\w]infer!|[^.$\w]typeof!|[^.$\w]void!|[^.$\w]delete!|[^.$\w]in!|[^.$\w]instanceof!|[!~*%&amp;^|?/&lt;&gt;+=-]=|[=&gt;]&gt;|[^.]\.|[^-]-|[^+]\+|[a-zA-Z0-9%).&lt;\]}]\s/|[^.$\w]await|[^.$\w]async|[^.$\w]class|[^.$\w]function|[^.$\w]keyof|[^.$\w]new|[^.$\w]readonly|[^.$\w]infer|[^.$\w]typeof|[^.$\w]void|[^.$\w]delete)\s+(?![\n{(+!~*%&amp;^|?:]|[&lt;&gt;/=-]=|[=&gt;]&gt;|\.[^.]|-[^-]|/[^&gt;]|(?:in|instanceof|satisfies|as|extends)\s+[^:=/,;&gt;]))</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -1645,7 +1645,7 @@
             <key>contentName</key>
             <string>source.ts</string>
             <key>match</key>
-            <string>(?:\s*\b(?:as|await|extends|in|instanceof|satisfies|keyof|new|typeof|void))+\s+(?![:=/,;&gt;])[a-zA-Z0-9_$@#]*</string>
+            <string>(?:\s*\b(?:as|await|delete|extends|in|instanceof|satisfies|keyof|new|typeof|void))+\s+(?![:=/,;&gt;])[a-zA-Z0-9_$@#]*</string>
             <key>captures</key>
             <dict>
               <key>0</key>
@@ -1925,12 +1925,26 @@
                 <key>begin</key>
                 <string>\s*(:)(?!=)</string>
                 <key>end</key>
-                <string>(?=[,;\](]|/&gt;|(?&lt;=[^=&gt;])&gt;|(?&lt;!^|[!~*%&amp;^|?:]|[!~*%&amp;^|?/&lt;&gt;+=-]=|[=&gt;]&gt;|[^.]\.|[^-]-|[^+]\+|[a-zA-Z0-9%).&lt;\]}]\s/|[^.$\w]await|[^.$\w]async|[^.$\w]class|[^.$\w]function|[^.$\w]keyof|[^.$\w]new|[^.$\w]readonly|[^.$\w]infer|[^.$\w]typeof|[^.$\w]void)\s+(?![\n{+!~*%&amp;^|?:]|[&lt;&gt;/=-]=|[=&gt;]&gt;|\.[^.]|-[^-]|/[^&gt;]|(?:in|instanceof|satisfies|as|extends)\s+[^:=/,;&gt;]))</string>
+                <string>(?=[,;\](]|/&gt;|(?&lt;=[^=&gt;])&gt;|(?&lt;!^|[~*%&amp;^|?:]|^!|[^\w$)\]]!|[^.$\w]await!|[^.$\w]async!|[^.$\w]class!|[^.$\w]function!|[^.$\w]keyof!|[^.$\w]new!|[^.$\w]readonly!|[^.$\w]infer!|[^.$\w]typeof!|[^.$\w]in!|[^.$\w]instanceof!|[!~*%&amp;^|?/&lt;&gt;+=-]=|[=&gt;]&gt;|[^.]\.|[^-]-|[^+]\+|[a-zA-Z0-9%).&lt;\]}]\s/|[^.$\w]await|[^.$\w]async|[^.$\w]class|[^.$\w]function|[^.$\w]keyof|[^.$\w]new|[^.$\w]readonly|[^.$\w]infer|[^.$\w]typeof)\s+(?![\n{+!~*%&amp;^|?:]|[&lt;&gt;/=-]=|[=&gt;]&gt;|\.[^.]|-[^-]|/[^&gt;]|(?:in|instanceof|satisfies|as|extends)\s+[^:=/,;&gt;]))</string>
                 <key>patterns</key>
                 <array>
                   <dict>
                     <key>include</key>
                     <string>source.ts#type</string>
+                  </dict>
+                  <dict>
+                    <key>comment</key>
+                    <string>In a type `void` is the void type, so unlike the operator it takes no operand</string>
+                    <key>match</key>
+                    <string>\s*\b(void)\b</string>
+                    <key>captures</key>
+                    <dict>
+                      <key>1</key>
+                      <dict>
+                        <key>name</key>
+                        <string>support.type.primitive.ts</string>
+                      </dict>
+                    </dict>
                   </dict>
                   <dict>
                     <key>include</key>
